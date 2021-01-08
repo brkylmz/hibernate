@@ -167,7 +167,32 @@ public class StockEntity {
 
 - ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `Örnek Kullanım`
 ```java
+@Entity(name = "Purchase_Request")
+@Table(name = "Purchase_Request", schema = "dbo", catalog = "hibernate")
+public class PurchaseRequestEntity {
+    @Id
+    @Column(name="pr_Id", unique = true, nullable = false)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private int prId;
 
+    @ManyToOne(
+            targetEntity = UserEntity.class,   //
+            cascade = CascadeType.ALL,        //
+            fetch = FetchType.LAZY,          //
+            optional = true                //Aradaki İlişki Zorunlu mudur?
+    )
+    @JoinColumn(name = "pr_usr_Id", insertable = true)
+    private UserEntity users;
+}
+
+@Entity(name = "users")
+@Table(name = "users", schema = "dbo", catalog = "hibernate")
+public class UserEntity {
+    @Id
+    @Column(name="usr_Id", unique = true, nullable = false)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private int Id;
+}
 ```
 
 
