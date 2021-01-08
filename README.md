@@ -1,18 +1,22 @@
 # hibernate
 
 @Entity: Veri tabanında bir karşılığı olduğunu belirtir.
+
 @Table: @Entity ile birlikte kullanılır. Database’de bir tabloya karşılık geldiğini belirtilir.  Özellikleri;
 -	Name: Tablo adını belirtir. Kullanılmazsa Class’ın adında bir tablomuz oluşur.
 -	Catalog: Tablonun catalog (database) belirtilir. (Örnek: JavaFx_GGM)
 -	Schema: Tablonun schema belirtilir. (Örnek: dbo)
 -	UniqeConstraints: Null değer olabilen primary key constraintlerdir.
 -	İndexes: Tablonun indexlerinin belirtir.
+
 @Id: Her entityde muhakkak bulunur. Primary keyin hangisi olduğunu belirtiriz.
+
 @Generated Value: Primary key’in değerini nasıl arttıracağımızı belirler.  Özellikleri; Strategy
 -	Auto Hiçbir şey belirtmezsek Auto alır. Arttırma görevini Hibernate yapar.
 -	Identity Düşük performanslıdır. Her insert için yeni değer oluşturur.
 -	Sequence En performanslıdır. Değer artırımı bir sequence ile yapılır. Belirtilmezse Hibernate varsayılan üzerinden yapar.
 -	Table Kullanılmaz. Performansızdır. Sıradaki değeri belirtilen tabloda depolar orada günceller ve lazım olduğunda yeni değer alır. Bu uygulamayı yavaşlatır.
+
 @Squence Generator: Kullanılacak Sequence özelliklerini özelleştirmek için kullanılır. Özellikleri;
 -	Name Generator’ın adını belirtir.
 -	SquenceName Squence’nin adını belirtir.
@@ -20,6 +24,7 @@
 -	İnitalValue Başlangıç sayısını belirtir. Default 1 ‘dir.
 -	Catalog Catalog belirtir. (Örnek: JavaFx_GGM)
 -	Schema Schema (dbo) belirtir. (Örnek: dbo)
+
 @Table Generator: Değer arttırmı yöntemi olarak ‘’Table’’ kullanılır. Özellikleri;
 -	Name Generator’ın ismini belirtir.
 -	Table Tablo adını belirtir.
@@ -31,6 +36,7 @@
 -	Schema Schema’yı belirtilir.
 -	pkColumnValue Tablodaki birincil anahtar değerini depolar.
 -	index / uniqueConstraints Bu tabloda olmasını istediğimiz index ve uniqueConstraints’leri belirtir.
+
 @Column: İlgili değişkenin tablodaki karşılığını belirler. Kullanılmaz ise default ile kolon açılır. İnsertable ve updateable false belirtilirse update ve insert o alanda yapılmaz. Özellikleri;
 -	Scole Ondalık kısmın basamak sayısı belirtilir.
 -	Precision Tam kısmın basamak sayıları belirtilir.
