@@ -7,7 +7,7 @@
 -	Schema: Tablonun schema belirtilir. (Örnek: dbo)
 -	UniqeConstraints: Null değer olabilen primary key constraintlerdir.
 -	İndexes: Tablonun indexlerinin belirtir.
--	
+
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@Id:` Her entityde muhakkak bulunur. Primary keyin hangisi olduğunu belirtiriz.
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@Generated Value:` Primary key’in değerini nasıl arttıracağımızı belirler.  Özellikleri; Strategy
