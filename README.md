@@ -56,7 +56,7 @@
 
 - [x]	Join yapılan tabloda 1-1 ilişkide kullanılır.
 
-->	mappedBy ile çift yönlü ilişkide kolon oluşturulmadan entity üzerine ekleme yapılır.
+- [x]	mappedBy ile çift yönlü ilişkide kolon oluşturulmadan entity üzerine ekleme yapılır.
 
 -	Coscade Coscade tipi belirlenir. 6 farklı tipi vardır. Yapılan işlemi diğer nesnede de yapılması istenirse ALL seçilir.
 -	Fetch Sorgu yapıldığında Join yapılan kolonunda getirilip getirilmemesi belirlenir. Default olarak Eager gelir. Sürekli birlikte kullanılır eagerda.
@@ -67,9 +67,9 @@
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@Many To Many:`
 
-->	Join yapılan tabloda n-n ilişkisinde kullanılır.
+- [x]	Join yapılan tabloda n-n ilişkisinde kullanılır.
 
-->	mappedBy ile çift yönlü ilişkide kolon oluşturulmadan entity üzerinde ekleme yapılabilir.
+- [x]	mappedBy ile çift yönlü ilişkide kolon oluşturulmadan entity üzerinde ekleme yapılabilir.
 
 -	Cascade Cascade tipi belirtilir. 6 tipi vardır. Bu nesneye yapılan işlem diğer nesneye de yapılır. 
 -	Fetch Sorgu yapıldığında join yapılan kolonunda tamamının getirilip getirilmeyeceğini belirtir. Sürekli birlikte kullanılacak tablolar olmadıkça type Lazy yapılmalıdır. 
@@ -77,15 +77,20 @@
 -	targetEntity Referans sınıfını belirtmek için kullanılır. Genelde kullanılmaz. Bazı durumlarda kullanılır.
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@Many To One:`
-->	En çok kullanılan ilişkidir.
-->  Join yapılan tablo ile arada n-1 ilişkisi vardır. MappedBy aynı şekildedir.
+
+- [x]	En çok kullanılan ilişkidir.
+
+- [x]  Join yapılan tablo ile arada n-1 ilişkisi vardır. MappedBy aynı şekildedir.
+
 -	Fetch Join yapılan kolonun tamamının getirilip getirilmeyeceği belirlenir.
 -	Cascade Cascade tipi belirlenir. 6 tipi vardır. 
 -	optinol Aradaki ilişki belirlenir. True olursa aradaki ilişki boş geçilebilir. False olursa bu alan zorunludur.
 -	Target Entity İlgili join ilişkin referans sınıfının belirlenmesini yapar.
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@One To Many:`
-->	Join yapılan tablo ile arada 1-n ilişkisi vardır.
+
+- [x]	Join yapılan tablo ile arada 1-n ilişkisi vardır.
+
 -	Fetch Join yapılan kolonun tamamının getirilip getirilmeyeceği belirlenir.
 -	Cascade Cascade tipi belirlenir. 6 tipi vardır. 
 -	mappedBy İlişki alanı için entityde kullanılan alan için databasede bir ilişkinin tablosu oluşturulmaz.
@@ -93,9 +98,13 @@
 -	OrhonRemowal true olursa ve join yaptığımız alanı değiştirip kaydedersek kaldırılan alanda databaseden silinir.
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@JoinColumn:`
-->	Entity içinde bir entity tanımlanması durumunda kullanılır.
-->	Oluşacak ilişki kolonuna ait özellikleri belirtmemize yarar.
-->	Kullanılmazsa default değerleri ile kolon oluşur.
+
+- [x]	Entity içinde bir entity tanımlanması durumunda kullanılır.
+
+- [x]	Oluşacak ilişki kolonuna ait özellikleri belirtmemize yarar.
+
+- [x]	Kullanılmazsa default değerleri ile kolon oluşur.
+
 -	Name Oluşacak kolonun adını belirleriz.
 -	Nullable Boş olup olamayacağını belirleriz.
 -	foreignKey Foreign Key’ini belirleriz.
@@ -107,8 +116,11 @@
 -	ColumnDefinition Colon için oluşturulan ddl’e eklenecek SQL’i belirleriz.
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@ForeignKey:`
-->	Tabloya Foreign key eklemek ve özelleştirmek için kullanılır.
-->	Eskiden tek başına kullanılırdı anca bu method artık kullanılmamaktadır.
+
+- [x]	Tabloya Foreign key eklemek ve özelleştirmek için kullanılır.
+
+- [x]	Eskiden tek başına kullanılırdı anca bu method artık kullanılmamaktadır.
+
 -	Name İsmi özelleştirebiliriz.
 -	ForeignKeyDefinition ForeignKey için tanımlamalar yapabiliriz.
 -	Value Constraint modu belirleyebiliriz. 3 değeri vardır.
@@ -117,9 +129,13 @@ II.	no_constraint: Constraintleri uygulamaz.
 III.	provider_default: Providerda tanımlı default davranışları benimser.
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@Index:`
-->	İndex eklemek için kullanılır.
-->	Birden fazla kolon için aynı index kullanılabilir.
-->	Eskiden tek başına kullanılırdı ancak bu method artık kullanılmamaktadır.
+
+- [x]	İndex eklemek için kullanılır.
+
+- [x]	Birden fazla kolon için aynı index kullanılabilir.
+
+- [x]	Eskiden tek başına kullanılırdı ancak bu method artık kullanılmamaktadır.
+
 -	Name İsim özelleştirebiliriz.
 -	ColumnList Eklenen isimleri hangi kolonlara ait olacağını belirtilir. Birden fazla eklenebilir. ''Adi, Id’’ gibi
 -	Unique Unique ile index’i unique yapabiliriz. Default olarak False’dır. True yaparsak index unique yapılır ve indexdeki indexleme alanı olarak seçilen verilerin tekrar kullanılmaması için bu yapı kullanılır. Veriye erişim hızını arttırır.
