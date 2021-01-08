@@ -213,8 +213,10 @@ Hibernate Config xml kullanımı;
 Org.hibernate.cache.EhcacheProvider
 </property>
 ```
-Javada Kullanımı:
+Javada Kullanımı;
+```sh
 query.setCachable(true);
+```
 
 1.	EHCache (Easy Hibernate Cache): Çok hızlıdır. Read-Wrider , Read.Only destekler.
 2.	OS Cache (Open Symphony Cache): Çok güçlüdür. Gruplama destekliyor. Sorguları son kullanma zamanı kontrolü destekler.
