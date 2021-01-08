@@ -67,7 +67,51 @@
 
 - ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `Örnek Kullanım`
 ```java
+@Entity(name = "users")
+@Table(name = "users", schema = "dbo", catalog = "hibernate")
+public class UserEntity {
+    @OneToOne(
+            mappedBy = "userEntity",                  //Kullanıldığı Entity'deki alan için Tabloda bir alan oluşturulmuyor ancak Entity'de kullanılıyor.
+            cascade = CascadeType.ALL,               //
+            fetch = FetchType.LAZY,                 //
+            orphanRemoval = true,                  //Join yapılan alan değiştirilip kaydedilirse. Kaldırılan alan Tablodan silinir
+            optional = true                       //Aradaki İlişki Zorunlu mudur?
+    )
+    @NotFound( action = NotFoundAction.IGNORE ) //İlişkili Kayıt Yoksa Hata Almamak için Not Found ile gösteririrz
+    private UserStickyNotesEntity userStickyNote;
+}
 
+
+@Entity
+@Table(
+        name = "UserStickyNotesEntity",
+        schema = "dbo",
+        catalog = "hibernate",
+        indexes = {
+                @Index(name = "IX_STICKY_ID", columnList = "sticky_Id", unique = true),
+                @Index(name = "IX_STICKY_USER_ID", columnList = "sticky_Id", unique = true)
+        }
+)
+public class UserStickyNotesEntity {
+    @Id
+    @Column(name="sticky_Id", unique = true, nullable = false)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private int Id;
+
+    @Lob
+    @Column(name = "sticky_note")
+    //@Lob - String olarak Büyük alan oluşturduk. byte[] ve char[]'da oluşturabiliriz.
+    private String note;
+    
+    @OneToOne(
+            fetch = FetchType.LAZY,            //
+            cascade = CascadeType.ALL,        //
+            orphanRemoval = true,            //Join yapılan alan değiştirilip kaydedilirse. Kaldırılan alan Tablodan silinir
+            optional = true                 //Aradaki İlişki Zorunlu mudur?
+    )
+    @JoinColumn(name = "sticky_usr_Id", insertable = true)
+    private UserEntity userEntity;
+}
 ```
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@Many To Many:`
