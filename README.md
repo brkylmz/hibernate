@@ -181,6 +181,42 @@ public class StockEntity {
 -	Target Entity İlgili join ilişkin referans sınıfının belirlenmesini yapar.
 -	OrhonRemowal true olursa ve join yaptığımız alanı değiştirip kaydedersek kaldırılan alanda databaseden silinir.
 
+
+- ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `Örnek Kullanım`
+```java
+@Entity(name = "users")
+@Table(name = "users", schema = "dbo", catalog = "hibernate")
+public class UserEntity {
+    @Id
+    @Column(name="usr_Id", unique = true, nullable = false)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private int Id;
+    
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JoinColumn(name = "log_usr_Id", insertable = true)
+    @NotFound( action = NotFoundAction.IGNORE )                 //İlişkili Kayıt Yoksa Hata Almamak için Not Found ile gösteririrz
+    private List<LogEntity> logs = new ArrayList<LogEntity>();
+}
+
+
+@Entity(name = "Log")
+@Table(name = "Log", schema = "dbo", catalog = "hibernate")
+public class LogEntity {
+    @Id
+    @Column(name="log_Id", unique = true, nullable = false)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private int log_Id;
+    
+    @Column(name = "log_usr_Id", precision = 4, scale = 0)
+    //precision - Toplam digit sayısı
+    //scale - Virgulden sonra 3 hane olur.
+    private double logUsId;
+}
+```
+
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@JoinColumn:`
 
 - [x]	Entity içinde bir entity tanımlanması durumunda kullanılır.
@@ -198,11 +234,6 @@ public class StockEntity {
 -	Unique Tabloda o kolonun uniq olup olmadığını belirtmemizi sağlar.
 -	Table Tablosunu belirleriz.
 -	ColumnDefinition Colon için oluşturulan ddl’e eklenecek SQL’i belirleriz.
-
-- ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `Örnek Kullanım`
-```java
-
-```
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@ForeignKey:`
 
