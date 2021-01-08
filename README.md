@@ -230,7 +230,7 @@ III.	provider_default: Providerda tanımlı default davranışları benimser.
 -	Unique Unique ile index’i unique yapabiliriz. Default olarak False’dır. True yaparsak index unique yapılır ve indexdeki indexleme alanı olarak seçilen verilerin tekrar kullanılmaması için bu yapı kullanılır. Veriye erişim hızını arttırır.
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@SecondaryTable:` Bir entity classında normalde bir tablo kullanılanbilir ancak SecondaryTable ile ikinci tabloyu kullanmak mümkündür.
-```sh
+```java
 @Table(name = ”Personel”)
 @SecondaryTable(name = “Adres”)
 public class Personel {
@@ -240,7 +240,7 @@ Private String Adres;
 }
 ```
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)`@Embedded ve @Embeddedable:` Bir Class’ı entity clasında kullanacağız. Bu kullanımda ilgli Class’ı bir alan gibi kullanacaz.
-```sh
+```java
 @Embeddedable
 public class Adres {
 .
@@ -261,7 +261,7 @@ Set/get
 }
 ```
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@ElementCollection:` Bir kişinin birden fazla adresi olabilir. Biz bunları aynı tabloda tutmuyoruz. ForeignKey ile farklı tabloda tutuyoruz. 
-```sh
+```java
 public class Adres {
 .
 .
@@ -281,7 +281,7 @@ Set/get
 }
 ```
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@Cachable:` Uygulama ile database arasındaki tampon bellektir. Bu tampon bellek, veritabanı isteğini azaltmak için kullanılır.
-```sh
+```java
 @Entity
 @Table(name = ”Personel”)
 @Cachable
@@ -297,13 +297,13 @@ Not: Bu işlem ikinci seviye cachleleme yöntemidir. Hiç cache kullanmasak bile
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Cache Provider:` 4 tane cache provider vardır. 
 
 Hibernate Config xml kullanımı; 
-```sh
+```java
 <property name = “hibernatecache.provider_class”>
 Org.hibernate.cache.EhcacheProvider
 </property>
 ```
 Javada Kullanımı;
-```sh
+```java
 query.setCachable(true);
 ```
 
@@ -313,7 +313,7 @@ query.setCachable(true);
 4.	JBoss Tree Cache: Ağırlıklı bankalarda kullanılır.
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Hibernate Toplu işlemler:` Toplu eklemede Hibernate 50.000 kayıttan sonra OutOfMemoryException verir. Toplu ekleme miktarını Hibernate config dosyasına yazmak gerekir. 
-```sh
+```java
 <property name = “hibernatecache.jdbc.batch_size”>
 50
 </property>
