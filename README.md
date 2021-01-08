@@ -65,6 +65,11 @@
 -	opphanRemovol True olursa ve join yapılan alan değiştirilip kaydedersek kaldırılan alan database’den silinir.
 -	Target Entity İlgili referans sınıfının belirtilmesine yarar. Genelde gerekmez. Özel durumlarda gerekir.
 
+- ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `Örnek Kullanım`
+```java
+
+```
+
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@Many To Many:`
 
 - [x]	Join yapılan tabloda n-n ilişkisinde kullanılır.
@@ -76,6 +81,35 @@
 -	mappedBy Çift yönlü ilişkilerde kolon oluşturulmadan entity üzerine ekleme yapılır.
 -	targetEntity Referans sınıfını belirtmek için kullanılır. Genelde kullanılmaz. Bazı durumlarda kullanılır.
 
+- ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `Örnek Kullanım`
+```java
+@Entity(name = "Purchase_Request")
+@Table(name = "Purchase_Request", schema = "dbo", catalog = "hibernate")
+public class PurchaseRequestEntity {
+
+    @Column(name = "pr_stock_code", length = 11)
+    private String prStockCode;
+    
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            joinColumns = { @JoinColumn(name = "pr_stock_code") }, //pr_stock_code -> Purchase_Request tablosundaki pr_stock_code alanı
+            inverseJoinColumns = { @JoinColumn(name = "stc_code") } // stc_code -> Stock tablosundaki stc_code alanı
+    )
+    Set<StockEntity> stocks = new HashSet<StockEntity>();
+}
+
+@Entity(name = "Stock")
+@Table(name = "Stock", schema = "dbo", catalog = "hibernate")
+public class StockEntity {
+    @Column(name = "stc_code", length = 11)
+    private String stcCode;
+    
+    @ManyToMany(mappedBy = "stocks") //mappedBy = "stocks" -> PurchaseRequestEntity Classındaki oluşturulan Set Collection'un adı
+    private Set<PurchaseRequestEntity> PurchaseRequests = new HashSet<PurchaseRequestEntity>();
+}
+
+```
+
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@Many To One:`
 
 - [x]	En çok kullanılan ilişkidir.
@@ -86,6 +120,12 @@
 -	Cascade Cascade tipi belirlenir. 6 tipi vardır. 
 -	optinol Aradaki ilişki belirlenir. True olursa aradaki ilişki boş geçilebilir. False olursa bu alan zorunludur.
 -	Target Entity İlgili join ilişkin referans sınıfının belirlenmesini yapar.
+
+- ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `Örnek Kullanım`
+```java
+
+```
+
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@One To Many:`
 
@@ -114,6 +154,11 @@
 -	Unique Tabloda o kolonun uniq olup olmadığını belirtmemizi sağlar.
 -	Table Tablosunu belirleriz.
 -	ColumnDefinition Colon için oluşturulan ddl’e eklenecek SQL’i belirleriz.
+
+- ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `Örnek Kullanım`
+```java
+
+```
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@ForeignKey:`
 
@@ -235,10 +280,3 @@ Session.flush();
 Session.clear();
 ```
 otomatik olarak yapılacak.
-
-
-```java
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html
-```
