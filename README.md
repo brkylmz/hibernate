@@ -201,7 +201,7 @@ public class Personel {
 
 }
 ```
-Not: Bu işlem ikinci seviye cacleleme yöntemidir. Hiç cache kullanmasak bile varsayılan olarak 1. Seviye cacheleme yapılmaktadır.
+Not: Bu işlem ikinci seviye cahcleleme yöntemidir. Hiç cache kullanmasak bile varsayılan olarak 1. Seviye cacheleme yapılmaktadır.
 
 
 
