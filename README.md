@@ -52,7 +52,7 @@
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@Lab:` İlgili kolonun büyük olduğunu belirtiriz. String, Blob yada clob (byte, char) olanlarla kullanılabilir.
 
-![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@OneToOne:`
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@One To One:`
 
 - [x]	Join yapılan tabloda 1-1 ilişkide kullanılır.
 
