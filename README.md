@@ -53,7 +53,9 @@
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@Lab:` İlgili kolonun büyük olduğunu belirtiriz. String, Blob yada clob (byte, char) olanlarla kullanılabilir.
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@OneToOne:`
+
 ->	Join yapılan tabloda 1-1 ilişkide kullanılır.
+
 ->	mappedBy ile çift yönlü ilişkide kolon oluşturulmadan entity üzerine ekleme yapılır.
 
 -	Coscade Coscade tipi belirlenir. 6 farklı tipi vardır. Yapılan işlemi diğer nesnede de yapılması istenirse ALL seçilir.
@@ -64,7 +66,9 @@
 -	Target Entity İlgili referans sınıfının belirtilmesine yarar. Genelde gerekmez. Özel durumlarda gerekir.
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `@Many To Many:`
+
 ->	Join yapılan tabloda n-n ilişkisinde kullanılır.
+
 ->	mappedBy ile çift yönlü ilişkide kolon oluşturulmadan entity üzerinde ekleme yapılabilir.
 
 -	Cascade Cascade tipi belirtilir. 6 tipi vardır. Bu nesneye yapılan işlem diğer nesneye de yapılır. 
