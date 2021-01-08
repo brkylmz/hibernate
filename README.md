@@ -71,7 +71,7 @@
 @Table(name = "users", schema = "dbo", catalog = "hibernate")
 public class UserEntity {
     @OneToOne(
-            mappedBy = "userEntity",                  //Kullanıldığı Entity'deki alan için Tabloda bir alan oluşturulmuyor ancak Entity'de kullanılıyor.
+            mappedBy = "userEntity",                  //UserStickyNotesEntity Classındaki UserEntity nesnesinin adı .Kullanıldığı Entity'deki alan için Tabloda bir alan oluşturulmuyor ancak Entity'de kullanılıyor.
             cascade = CascadeType.ALL,               //
             fetch = FetchType.LAZY,                 //
             orphanRemoval = true,                  //Join yapılan alan değiştirilip kaydedilirse. Kaldırılan alan Tablodan silinir
