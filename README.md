@@ -1,6 +1,6 @@
 # hibernate
-# Dillinger
 @Entity: Veri tabanında bir karşılığı olduğunu belirtir.
+
 @Table: @Entity ile birlikte kullanılır. Database’de bir tabloya karşılık geldiğini belirtilir.  Özellikleri;
 -	Name: Tablo adını belirtir. Kullanılmazsa Class’ın adında bir tablomuz oluşur.
 -	Catalog: Tablonun catalog (database) belirtilir. (Örnek: JavaFx_GGM)
